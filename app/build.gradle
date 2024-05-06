@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.dagger.hilt.android'
+
+android {
+    namespace 'com.myapp.paginglibrary'
+    compileSdk 33
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.myapp.paginglibrary"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+
+//        implementation('org.example:example-library:1.0') {
+//            exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+//        }
+
+//    RETROFIT AND GSON
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+//    RxJava 3
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+//   PAGING 3 LIBRARY
+
+    def paging_version = "3.1.1"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+//    RxJava 3 Support library
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
+
+//    Hilt Dagger
+
+    implementation 'com.google.dagger:hilt-android:2.45'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.45'
+
+//    GLIDE
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+//    Android Lifecycle, viewModel, LiveData
+
+    def lifecycle_version = "2.6.1"
+    def arch_version = "2.2.0"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+//     LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
